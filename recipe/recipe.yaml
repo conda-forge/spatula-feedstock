@@ -1,7 +1,7 @@
 schema_version: 1
 
 context:
-  version: "0.1.1"
+  version: "0.2.0"
 
 package:
   name: spatula
@@ -9,7 +9,7 @@ package:
 
 source:
   url: https://github.com/glotzerlab/spatula/releases/download/v${{ version }}/spatula-${{ version }}.tar.gz
-  sha256: 8280057dd5950f5412d0d4c0e4d1116edddb93f1fe56975257b07726e0eeac5e
+  sha256: 33bcf9c2dff38ddd2b583d99ad93b77fc20f1c0060d06b8279cc43cb5b3463de
 
 build:
   script: ${{ PYTHON }} -m pip install . --ignore-installed --no-cache-dir --no-deps -vv
