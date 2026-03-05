@@ -23,7 +23,9 @@ requirements:
     - ${{ compiler('cxx') }}
     - ${{ stdlib('c') }}
     - cmake
-    - ispc
+    - if: linux
+      then:
+        - ispc
     - if: build_platform != target_platform
       then:
         - python      ${{ minimum_python }}.*
