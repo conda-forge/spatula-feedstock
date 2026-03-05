@@ -6,7 +6,7 @@ context:
 package:
   name: spatula
   version: ${{ version }}
-  python_min: "3.12"
+  min_python: "3.12"
 
 source:
   url: https://github.com/glotzerlab/spatula/releases/download/v${{ version }}/spatula-${{ version }}.tar.gz
@@ -26,8 +26,8 @@ requirements:
     - ispc
     - if: build_platform != target_platform
       then:
-        - python      ${{ python_min }}.*
-        - python-abi3 ${{ python_min }}.*
+        - python      ${{ min_python }}.*
+        - python-abi3 ${{ min_python }}.*
         - cross-python_${{ target_platform }}
         - nanobind >=2.0.0
         - numpy
@@ -36,8 +36,8 @@ requirements:
       then:
         - make
   host:
-    - python      ${{ python_min }}.*
-    - python-abi3 ${{ python_min }}.*
+    - python      ${{ min_python }}.*
+    - python-abi3 ${{ min_python }}.*
     - pip
     - scikit-build-core
     - pybind11
