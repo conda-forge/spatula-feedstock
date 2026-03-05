@@ -40,7 +40,7 @@ requirements:
     - python-abi3 ${{ minimum_python }}.*
     - pip
     - scikit-build-core
-    - pybind11
+    - nanobind
     - numpy
   run:
     - python
