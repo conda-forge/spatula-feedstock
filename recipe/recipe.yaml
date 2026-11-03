@@ -14,7 +14,7 @@ source:
 
 build:
   script: ${{ PYTHON }} -m pip install . --ignore-installed --no-cache-dir --no-deps -vv
-  number: 2
+  number: 3
   python:
     version_independent: true
 
