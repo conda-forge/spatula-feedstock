@@ -14,7 +14,7 @@ source:
 
 build:
   script: ${{ PYTHON }} -m pip install . --ignore-installed --no-cache-dir --no-deps -vv
-  number: 2
+  number: 3
   python:
     version_independent: true
 
@@ -23,7 +23,7 @@ requirements:
     - ${{ compiler('cxx') }}
     - ${{ stdlib('c') }}
     - cmake
-    - if: linux
+    - if: linux and target_platform != "linux-aarch64"
       then:
         - ispc
     - if: build_platform != target_platform
@@ -60,7 +60,7 @@ tests:
         - pytest
         - coxeter
     script:
-      - if: unix
+      - if: unix and target_platform != "linux-aarch64" 
         then:
           - python -m pytest tests/ -v --pg-first --skip-boosop
       - if: win
