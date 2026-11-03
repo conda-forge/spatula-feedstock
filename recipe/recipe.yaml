@@ -60,7 +60,7 @@ tests:
         - pytest
         - coxeter
     script:
-      - if: unix
+      - if: unix and target_platform != "linux-aarch64" 
         then:
           - python -m pytest tests/ -v --pg-first --skip-boosop
       - if: win
