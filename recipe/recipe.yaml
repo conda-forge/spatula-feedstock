@@ -14,7 +14,7 @@ source:
 
 build:
   script: ${{ PYTHON }} -m pip install . --ignore-installed --no-cache-dir --no-deps -vv
-  number: 3
+  number: 4
   python:
     version_independent: true
 
@@ -23,7 +23,7 @@ requirements:
     - ${{ compiler('cxx') }}
     - ${{ stdlib('c') }}
     - cmake
-    - if: linux and target_platform != "linux-aarch64"
+    - if: not (linux and target_platform == "linux-aarch64")
       then:
         - ispc
     - if: build_platform != target_platform
