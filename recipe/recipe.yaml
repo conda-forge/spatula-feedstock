@@ -13,8 +13,12 @@ source:
   sha256: 33bcf9c2dff38ddd2b583d99ad93b77fc20f1c0060d06b8279cc43cb5b3463de
 
 build:
-  script: ${{ PYTHON }} -m pip install . --ignore-installed --no-cache-dir --no-deps -vv
-  number: 4
+  script:
+    - if: x86_64
+      then: ${{ PYTHON }} -m pip install . --ignore-installed --no-cache-dir --no-deps -vv --config-settings="cmake.define.CMAKE_ISPC_FLAGS=--target=avx2-i32x8"
+    - if: arm64
+      then: ${{ PYTHON }} -m pip install . --ignore-installed --no-cache-dir --no-deps -vv --config-settings="cmake.define.CMAKE_ISPC_FLAGS=--target=neon-i32x4"
+  number: 5
   python:
     version_independent: true
 
