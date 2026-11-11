@@ -16,9 +16,11 @@ build:
   script:
     - if: x86_64
       then: ${{ PYTHON }} -m pip install . --ignore-installed --no-cache-dir --no-deps -vv --config-settings="cmake.define.ISPC_TARGET=avx2-i32x8"
-    - if: arm64
-      then: ${{ PYTHON }} -m pip install . --ignore-installed --no-cache-dir --no-deps -vv --config-settings="cmake.define.ISPC_TARGET=neon-i32x4"
-  number: 5
+      else:
+        - if: arm64
+          then: ${{ PYTHON }} -m pip install . --ignore-installed --no-cache-dir --no-deps -vv --config-settings="cmake.define.ISPC_TARGET=neon-i32x4"
+          else: ${{ PYTHON }} -m pip install . --ignore-installed --no-cache-dir --no-deps -vv
+  number: 6
   python:
     version_independent: true
 
